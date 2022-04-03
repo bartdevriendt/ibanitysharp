@@ -23,10 +23,10 @@ jobs:
     - name: Setup .NET Core 3.0
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.0.101
+        dotnet-version: 6.0.201
     - name: .NET Core SxS
       run: |
-                rsync -a ${DOTNET_ROOT/3.0.101/2.1.607}/* $DOTNET_ROOT/
+                rsync -a ${DOTNET_ROOT/6.0.201/2.1.607}/* $DOTNET_ROOT/
     - name: Build
       run: dotnet build --configuration Release
     - name: Test
