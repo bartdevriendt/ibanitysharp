@@ -20,7 +20,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.1.607
-    - name: Setup .NET Core 3.0
+    - name: Setup .NET Core 6.0
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.201
@@ -38,14 +38,14 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - name: Setup .NET Core 3.0
+    - name: Setup .NET Core 6.0
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.0.101
+        dotnet-version: 6.0.201
     - name: Determine version
-      run: echo "::set-env name=VERSION::$(git describe --tags --dirty)"
+      run: echo "VERSION==$(git describe --tags --dirty)" >> $GITHUB_ENV
     - name: Pack
-      run: dotnet pack --output ./artifacts --configuration Release -p:Version=$VERSION
+      run: dotnet pack --output ./artifacts --configuration Release -p:Version=${{ env.VERSION }}
     - uses: actions/upload-artifact@v1
       with:
         name: artifacts
@@ -55,10 +55,10 @@ jobs:
     needs: pack
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
     steps:
-    - name: Setup .NET Core 3.0
+    - name: Setup .NET Core 6.0
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.0.101
+        dotnet-version: 6.0.201
     - uses: actions/download-artifact@v1
       with:
         name: artifacts
