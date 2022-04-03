@@ -6,6 +6,9 @@
         <Nullable>enable</Nullable>
         <LangVersion>10.0</LangVersion>
         <RootNamespace></RootNamespace>
+        <Authors>BDSoft</Authors>
+        <Description>Library for talking to Isabel Connect on Ibanity</Description>
+        <RepositoryUrl>https://github.com/bartdevriendt/ibanitysharp</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
