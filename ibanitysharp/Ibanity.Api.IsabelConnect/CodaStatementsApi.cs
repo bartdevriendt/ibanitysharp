@@ -24,13 +24,17 @@ public class CodaStatementsApi
         _signingCertificateIdentifier = signingCertificateIdentifier;
     }
     
-    public AccountReportList GetAccountReportList(string after = "")
+    public AccountReportList GetAccountReportList(string after = "", int size = 20)
     {
         
         string uri = ACCOUNT_REPORTS_URI;
         if (after != "0")
         {
-            uri += $"?after={after}";
+            uri += $"?after={after}&size={size}";
+        }
+        else
+        {
+            uri += $"?size={size}";
         }
         
         RestClientOptions options = new RestClientOptions( Constants.API_URL_PREFIX + uri);
