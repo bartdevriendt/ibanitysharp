@@ -11,6 +11,10 @@
         <RepositoryUrl>https://github.com/bartdevriendt/ibanitysharp</RepositoryUrl>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DebugType>full</DebugType>
+    </PropertyGroup>
+
     <ItemGroup>
       <PackageReference Include="BouncyCastle" Version="1.8.9" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />

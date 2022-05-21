@@ -28,7 +28,7 @@ public class IsabelConnectAccessTokenManager : IAccessTokenManager
     }
 
 
-    public void FetchInitialToken(string authorizationCode)
+    public void FetchInitialToken(string authorizationCode, string redirectUrl)
     {
         RestClientOptions options = new RestClientOptions(ACCESSTOKENURL);
         options.ClientCertificates = new X509CertificateCollection()
@@ -40,7 +40,7 @@ public class IsabelConnectAccessTokenManager : IAccessTokenManager
         RestRequest restRequest = new RestRequest();
         restRequest.Method = Method.Post;
 
-        string body = $"grant_type=authorization_code&code={authorizationCode}&redirect_uri=http://localhost";
+        string body = $"grant_type=authorization_code&code={authorizationCode}&redirect_uri={redirectUrl}";
         restRequest.AddStringBody(body, DataFormat.None);
         
         restRequest.AddHeader("Content-Type", "application/x-www-form-urlencoded");
